@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mt-5">
+    <div class="mt-5 mb-3 text-center text-light">
+        <h1>Login</h1>
+    </div>
+    <div class="col col-md-8 justify-content-center mx-auto p-3">
+        <form method="post">
+            {% csrf_token %}
+            <div class="text-danger">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="{{ form.username.id_for_label}}">{{ form.username.label_tag }}</span>
+              {{ form.username }}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="{{ form.password.id_for_label}}">{{ form.password.label_tag }}</span>
+                {{ form.password}}
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-secondary" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
